@@ -1,5 +1,16 @@
 $(function() {
 
+  $(window).scroll(function(){
+    if ($(window).scrollTop() >= 430) {
+        $("#stickyNav").addClass('sticky');
+        // $('nav div').addClass('visible-title');
+    }
+    else {
+        $("#stickyNav").removeClass('sticky');
+        // $('nav div').removeClass('visible-title');
+    }
+  });
+
     $(".change-status").on("click", function(e) {
         var burgID = $(this).data("id");
         var devoured = {

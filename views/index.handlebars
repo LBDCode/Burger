@@ -1,74 +1,72 @@
+<div class="container-fluid main">
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <img class="center-img" src="/assets/images/large_logo.png">
+        <h1 class="burger-add">Add a New Burger</h1>
+            <form class="new-burger">
+                <div class="form-group">
+                    <label for="burger"></label>
+                    <input type="text" id="burger" name="name" placeholder="Burger Name">
+                </div>
+            <button id="burger-submit" type="submit">Add Burger</button>
 
-<div class="jumbotron jumbotron-fluid">
-<div class="container">
-    <img class="center-img" src="/assets/images/large_logo.png">
-    <h1 class="burger-add">Add a New Burger</h1>
-        <form class="new-burger">
-            <div class="form-group">
-                <label for="burger"></label>
-                <input type="text" id="burger" name="name" placeholder="Burger Name">
-            </div>
-        <button id="burger-submit" type="submit">Add Burger</button>
-
-        </form>
-</div>
-</div>
-
-<nav class="navbar navbar-inverse addl-nav justify-content-center" data-spy="affix" data-offset-top="197">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
+            </form>
     </div>
-    <div>
-      <div class="collapse navbar-collapse " id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#section1">Uneaten Burgers</a></li>
-          <li><a href="#section2">Eaten Burgers</a></li>
-        </ul>
-      </div>
     </div>
-  </div>
-</nav>    
 
-<div id="section1" class="jumbotron jumbotron-fluid">
-<h2>Uneaten Burgers</h2>
-<row class="eaten-burgers container">
-    <column>
-    {{#each burgers }}
-        {{#unless devoured}}
-            <div>
-                <img class="burger-pic" src="/assets/images/burger.jpg">
-                <h4>{{burger_name}}</h4>
+    <nav class="navbar" id="stickyNav">
+        <a href="#section1">Uneaten Burgers</a>
+        <a href="#section2">Eaten Burgers</a>
+    </nav>
 
-                <button class="change-status" data-id="{{id}}" data-status="{{devoured}}">
-                    Eat the Burger!
-                </button>
-            </div>
-        {{/unless}}
-    
-    {{/each}}
-    </column>
-</row>
+
+
+
+    <div id="section1" class="jumbotron jumbotron-fluid">
+    <h2>Uneaten Burgers</h2>
+    <div class="row eaten-burgers">
+    <div class="card-columns">
+        {{#each burgers }}
+            {{#unless devoured}}
+                <div class="card burgDiv">
+                    <img class="card-img-top" src="/assets/images/burger.jpg">
+                    <div class="card-body">
+                    <h4 class="card-title">{{burger_name}}</h4>
+
+                    <button class="change-status" data-id="{{id}}" data-status="{{devoured}}">
+                        Eat the Burger!
+                    </button>
+                    </div>
+                </div>
+            {{/unless}}
+        
+        {{/each}}
+    </div>
+    </div>
+    </div>
+
+    <div id="section2" class="jumbotron jumbotron-fluid">
+    <h2>Eaten Burgers</h2>
+    <div class="row eaten-burgers">
+    <div class="card-columns">
+        {{#each burgers }}
+            {{#if devoured}}
+                <div class="card burgDiv">
+                    <img class="card-img-top" src="/assets/images/burger.jpg">
+                    <div class="card-body">
+                    <h4 class="card-title">{{burger_name}}</h4>
+
+                    </div>
+                </div>
+            {{/if}}
+        
+        {{/each}}
+    </div>
+    </div>
+    </div>
+
 </div>
 
-<div id="section2" class="jumbotron jumbotron-fluid">
-<h1>Burgers that have been eaten</h1>
-<ul>
-    {{#each burgers }}
-        {{#if devoured}}
-            <li>
-                {{burger_name}}
-
-            </li>
-        {{/if}}
-    
-    {{/each}}
-</ul>
-</div>
 
 
 
